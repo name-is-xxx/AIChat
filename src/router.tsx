@@ -37,6 +37,6 @@ const router = createBrowserRouter([
     ],
   },
   { path: "/login", element: <LoginPage /> },
-]);
+], { basename: import.meta.env.BASE_URL });
 
 export default router;
