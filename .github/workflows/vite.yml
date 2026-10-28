@@ -65,6 +65,8 @@ jobs:
       # 配置项目
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
       # 安装依赖
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
@@ -75,7 +77,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./dist
 
   # 部署 Deployment job
   deploy:
