@@ -2,27 +2,17 @@
 
 轻量的 AI 聊天前端原型：支持新建和切换会话、搜索聊天记录、示例问题、模拟回复，以及 Free / Plus / Pro / Max 套餐选择和模拟订阅。
 
-技术栈：React、TypeScript、Mantine 和 Tailwind CSS。Mantine 用于可访问的徽标、搜索框与复选框；Tailwind 工具类统一使用 `tw-` 前缀；产品布局、对话样式和动效由局部 CSS 负责，避免全局样式互相覆盖。
+技术栈：React、TypeScript、Mantine、Tailwind CSS。
 
 ## 运行
 
-需要 Node.js 20 或更新版本。
-
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
 打开终端显示的本地地址即可体验。生产构建：
 
 ```bash
-npm run build
+pnpm run build
 ```
-
-## 演示内容
-
-- 初始为 Free 套餐；可从顶栏「充值」进入套餐页。
-- 套餐默认值：Free 每日 30 次、Plus ¥39/月（每月 5,000 次）、Pro ¥99/月（每月 20,000 次）、Max ¥199/月（不限次）。
-- 订阅购买需要选择支付方式并勾选月度自动续费说明；模拟成功后套餐标签和续费日期会更新。
-- 会话、AI 回复和订阅订单保存在前端内存中，刷新页面后重置。套餐权益只用于展示，不会实际限制对话。
-- 不连接真实 AI 或支付服务，不会产生真实扣款。使用的图标来自 Lucide React；界面不依赖远程图片或字体。
