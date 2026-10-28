@@ -1,8 +1,4 @@
-# Sample workflow for building and deploying a Next.js site to GitHub Pages
-#
-# To get started with Next.js see: https://nextjs.org/docs/getting-started
-#
-name: Deploy Next.js site to Pages
+name: Deploy Vite
 
 on:
   # 代码推送到main时触发
@@ -66,30 +62,15 @@ jobs:
         with:
           node-version: ">=20.12.0"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-      # 配置Next.js项目
+      # 配置项目
       - name: Setup Pages
         uses: actions/configure-pages@v5
-        with:
-          #表明是next项目，该参数会自动注入basePath，并禁用服务器端图像优化，因为GitHub Page不支持动态功能
-          # 也可不设置，在next.config.js中配置
-          static_site_generator: next
-      # 恢复缓存以加速构建过程
-      - name: Restore cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            .next/cache
-          # 定义缓存的key => 操作系统-描述性标签-依赖文件的哈希值(可文件是否改变)
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm.lock','**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-          # 恢复缓存的key => 操作系统-描述性标签-依赖文件的哈希值(可文件是否改变)-(表示后续任何字符都可匹配，也就是说只要依赖不变就可通过缓存恢复)
-          restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm.lock','**/package-lock.json', '**/yarn.lock') }}-
       # 安装依赖
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       # 构建
-      - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+      - name: Build with Vite
+        run: ${{ steps.detect-package-manager.outputs.runner }} run build
       # 打包构建生成的项目文件
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
